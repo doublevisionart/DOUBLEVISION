@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Double Vision - Zeitgenössische Ölmalerei von Carlotta & Basti. Limitierte Kunstdrucke und Originalgemälde aus Dresden.">
+    <meta name="keywords" content="Ölmalerei, Kunstgalerie, Zeitgenössische Kunst, Limitierte Prints, Dresden Kunst">
+    <meta property="og:title" content="Double Vision - Contemporary Oil Paintings">
+    <meta property="og:description" content="Expressive Ölgemälde von zwei Künstlern aus Dresden">
+    <meta property="og:image" content="https://doublevisions.art/og-image.jpg">
+    <meta property="og:url" content="https://doublevisions.art">
+    <title>Double Vision | Contemporary Oil Art</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-orange: #D97847;
+            --accent-teal: #4A8A7F;
+            --text-light: #f5f5f5;
+            --text-gray: #b0b0b0;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Crimson Text', 'Georgia', serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid rgba(217, 120, 71, 0.2);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-orange);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(217, 120, 71, 0.1), rgba(74, 138, 127, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 12px;
+            color: var(--text-light);
+            font-weight: 300;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: transparent;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--text-light);
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            animation: fadeInUp 1.4s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--text-light);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .gallery {
+            padding: 8rem 5%;
+            background: var(--secondary-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 6px;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            background: var(--primary-dark);
+            border: 1px solid rgba(217, 120, 71, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.95), transparent);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(217, 120, 71, 0.2), rgba(74, 138, 127, 0.2));
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .about {
+            padding: 8rem 5%;
+            background: var(--primary-dark);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-orange);
+        }
+
+        .about-text p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .artists {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .artist-card {
+            padding: 2rem;
+            background: var(--secondary-dark);
+            border-left: 3px solid var(--accent-teal);
+        }
+
+        .artist-card h3 {
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .artist-card .aka {
+            color: var(--text-gray);
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .shop {
+            padding: 8rem 5%;
+            background: var(--secondary-dark);
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .product-card {
+            background: var(--primary-dark);
+            border: 1px solid rgba(217, 120, 71, 0.2);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(217, 120, 71, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+            box-shadow: 0 10px 30px rgba(217, 120, 71, 0.2);
+        }
+
+        .product-card h3 {
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin: 1rem 0;
+        }
+
+        .product-card ul {
+            list-style: none;
+            color: var(--text-gray);
+            margin: 1.5rem 0;
+            line-height: 2;
+        }
+
+        .add-to-cart {
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--accent-orange);
+            border: 1px solid var(--accent-orange);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart:hover {
+            background: var(--accent-orange);
+            color: var(--primary-dark);
+        }
+
+        .contact {
+            padding: 8rem 5%;
+            background: var(--primary-dark);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            color: var(--text-gray);
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-orange);
+            transform: translateY(-3px);
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: var(--secondary-dark);
+            border: 1px solid rgba(217, 120, 71, 0.2);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter h3 {
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .newsletter p {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            padding: 1rem;
+            background: var(--primary-dark);
+            border: 1px solid rgba(217, 120, 71, 0.3);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            text-align: left;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .checkbox-wrapper input[type="checkbox"] {
+            margin-top: 0.3rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-wrapper a {
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        .checkbox-wrapper a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-modal.active {
+            display: flex;
+        }
+
+        .cart-content {
+            background: var(--secondary-dark);
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid var(--accent-orange);
+        }
+
+        .cart-content h2 {
+            color: var(--accent-orange);
+            margin-bottom: 2rem;
+        }
+
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(217, 120, 71, 0.2);
+        }
+
+        .cart-total {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin: 2rem 0;
+            text-align: right;
+        }
+
+        .close-cart {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            margin-top: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-form h3 {
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary-dark);
+            border: 1px solid rgba(217, 120, 71, 0.3);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+        }
+
+        footer {
+            background: var(--secondary-dark);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(217, 120, 71, 0.2);
+            color: var(--text-gray);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .success-message {
+            display: none;
+            padding: 1.5rem;
+            background: rgba(74, 138, 127, 0.2);
+            border: 1px solid var(--accent-teal);
+            color: var(--text-light);
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">DOUBLE VISION</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Galerie</a></li>
+                <li><a href="#about">Über Uns</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li class="cart-icon" onclick="toggleCart()">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>DOUBLE VISION</h1>
+            <p>Contemporary Oil Paintings • Dresden</p>
+            <a href="#gallery" class="cta-button">Entdecke Unsere Kunst</a>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Galerie</h2>
+        <p class="section-subtitle">Zeitgenössische Ölmalerei mit expressiven Farben und emotionaler Tiefe</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="placeholder-img">Kunstwerk 01 • 150×100cm</div>
+                <div class="gallery-overlay">
+                    <h3>Untitled Portrait Series</h3>
+                    <p>Öl auf Leinwand • 2025</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="placeholder-img">Kunstwerk 02 • 160×120cm</div>
+                <div class="gallery-overlay">
+                    <h3>Mountain Memory</h3>
+                    <p>Öl auf Leinwand • 2025</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="placeholder-img">Kunstwerk 03 • 80×60cm</div>
+                <div class="gallery-overlay">
+                    <h3>Urban Reflections</h3>
+                    <p>Öl auf Leinwand • 2024</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="placeholder-img">Kunstwerk 04 • 100×80cm</div>
+                <div class="gallery-overlay">
+                    <h3>Double Vision</h3>
+                    <p>Öl auf Leinwand • 2024</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="placeholder-img">Kunstwerk 05 • 60×40cm</div>
+                <div class="gallery-overlay">
+                    <h3>Color Studies</h3>
+                    <p>Öl auf Leinwand • 2024</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <div class="placeholder-img">Kunstwerk 06 • 80×60cm</div>
+                <div class="gallery-overlay">
+                    <h3>Portrait in Orange</h3>
+                    <p>Öl auf Leinwand • 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Über Double Vision</h2>
+                <p>Double Vision entstand aus der Begegnung zweier Künstler in Dresden – zwei Reisende, die sich 2023 im Tattoo-Studio kennenlernten und eine tiefere Verbindung entdeckten, die weit über die Haut hinausgeht.</p>
+                <p>Was als gemeinsame Tattoo-Projekte begann – Bastis mikrorealistisches Handwerk verschmolz mit Carlottas präziser Linienführung – entwickelte sich zu einer künstlerischen Partnerschaft auf der Leinwand. In der Ölmalerei fanden wir eine neue Sprache.</p>
+                <p>Unsere Bilder sind Gespräche zwischen zwei Welten – der Süden trifft den Norden, tausend Reisen treffen den gegenwärtigen Moment. Jedes Gemälde trägt beide unserer Perspektiven, daher der Name: Double Vision.</p>
+            </div>
+            
+            <div class="artists">
+                <div class="artist-card">
+                    <h3>Carlotta</h3>
+                    <p class="aka" style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 300; letter-spacing: 2px;">08.06.1995</p>
+                    <p>Geboren in Parchim, geprägt von einer Liebe zum Reisen und der Suche nach authentischem Ausdruck. Ihre künstlerische Philosophie: Jeder Körper ist einzigartig und verdient es, dass Kunst seinem natürlichen Fluss folgt.</p>
+                    <p>In der Malerei bringt Carlotta geometrische Präzision, meditative Strukturen und eine tiefe Sensibilität für Komposition ein. Ihre Arbeit ist geprägt von Dotwork, filigraner Linienführung und einer Fähigkeit, das Wesentliche zu destillieren. Neben der Kunst arbeitet sie als Tätowiererin, spezialisiert auf Fineline, Mandalas und Lettering.</p>
+                </div>
+                
+                <div class="artist-card">
+                    <h3>Basti</h3>
+                    <p class="aka" style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 300; letter-spacing: 2px;">30.09.1992</p>
+                    <p>Geboren in Tübingen, künstlerisch geprägt durch die renommierte Malerin Ellen Deiss aus Bodelshausen. Schreinerausbildung mit wertvoller Materialerfahrung, dann jahrelang unterwegs: im Bus zu Festivals, durch Australien, Asien, Indien – stets auf der Suche nach Inspiration.</p>
+                    <p>2023 Ankunft in Dresden, wo Basti seine Reiseerfahrungen, Naturverbundenheit und kulturellen Einflüsse in mikrorealistisches Können übersetzt. Seine Kunst lebt von emotionaler Tiefe, präzisen Details und der Fähigkeit, Momente in ihrer ganzen Intensität einzufangen. Tätowierer mit Spezialisierung auf Mikrorealismus, Realismus und Surrealismus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="shop" id="shop">
+        <h2 class="section-title">Shop</h2>
+        <p class="section-subtitle">Limitierte Kunstdrucke in Museumsqualität</p>
+        
+        <div class="shop-grid">
+            <div class="product-card">
+                <h3>A4 Print</h3>
+                <div class="price">45€</div>
+                <ul>
+                    <li>21 × 30 cm</li>
+                    <li>Signiert & nummeriert</li>
+                    <li>Limitiert auf 50 Stück</li>
+                    <li>Giclée-Druck</li>
+                </ul>
+                <button class="add-to-cart" onclick="addToCart('A4 Print', 45)">In den Warenkorb</button>
+            </div>
+            
+            <div class="product-card">
+                <h3>A3 Print</h3>
+                <div class="price">85€</div>
+                <ul>
+                    <li>30 × 42 cm</li>
+                    <li>Signiert & nummeriert</li>
+                    <li>Limitiert auf 50 Stück</li>
+                    <li>Giclée-Druck</li>
+                </ul>
+                <button class="add-to-cart" onclick="addToCart('A3 Print', 85)">In den Warenkorb</button>
+            </div>
+            
+            <div class="product-card">
+                <h3>A2 Print</h3>
+                <div class="price">135€</div>
+                <ul>
+                    <li>42 × 59 cm</li>
+                    <li>Signiert & nummeriert</li>
+                    <li>Limitiert auf 50 Stück</li>
+                    <li>Giclée-Druck</li>
+                </ul>
+                <button class="add-to-cart" onclick="addToCart('A2 Print', 135)">In den Warenkorb</button>
+            </div>
+
+            <div class="product-card">
+                <h3>A1 Print</h3>
+                <div class="price">200€</div>
+                <ul>
+                    <li>59 × 84 cm</li>
+                    <li>Signiert & nummeriert</li>
+                    <li>Limitiert auf 50 Stück</li>
+                    <li>Giclée-Druck</li>
+                </ul>
+                <button class="add-to-cart" onclick="addToCart('A1 Print', 200)">In den Warenkorb</button>
+            </div>
+            
+            <div class="product-card">
+                <h3>Originalgemälde</h3>
+                <div class="price">auf Anfrage</div>
+                <ul>
+                    <li>Verschiedene Größen</li>
+                    <li>Öl auf Leinwand</li>
+                    <li>Unikate</li>
+                    <li>Mit Zertifikat</li>
+                </ul>
+                <a href="#contact" class="add-to-cart">Kontakt aufnehmen</a>
+            </div>
+            
+            <div class="product-card">
+                <h3>Kommissionen</h3>
+                <div class="price">individuell</div>
+                <ul>
+                    <li>Persönliche Porträts</li>
+                    <li>Wunschgröße</li>
+                    <li>Farbwünsche</li>
+                    <li>Individuelle Beratung</li>
+                </ul>
+                <a href="#contact" class="add-to-cart">Anfrage senden</a>
+            </div>
+        </div>
+    </section>
